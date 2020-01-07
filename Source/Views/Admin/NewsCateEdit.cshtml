@@ -1,0 +1,36 @@
+﻿@model Source.Models.DBF.Tbnewscate
+
+@{
+    ViewData["Title"] = "NewsCateEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>NewsCateEdit</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewsCateEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NewscateId" />
+            <div class="form-group">
+                <label asp-for="NewscateName" class="control-label"></label>
+                <input asp-for="NewscateName" class="form-control" />
+                <span asp-validation-for="NewscateName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewscateNote" class="control-label"></label>
+                <input asp-for="NewscateNote" class="form-control" />
+                <span asp-validation-for="NewscateNote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

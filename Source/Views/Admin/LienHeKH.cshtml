@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Source.Models.DBF.Tbcontact>
+
+@{
+    ViewData["Title"] = "LienHeKH";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>LienHeKH</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactContent)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactContent)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ContactId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ContactId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ContactId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

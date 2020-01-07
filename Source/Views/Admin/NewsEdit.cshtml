@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "NewsEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model News
+<div>
+    <form enctype="multipart/form-data" asp-action="NewsEdit" method="post" id="uploader">
+        <div class="modal-body">
+            <input type="hidden" asp-for="NewsId" />
+            <div asp-validation-summary="All"></div>
+            <p>
+                <label>Tiêu đề:</label>
+                <input asp-for="NewsTitle" />
+            </p>
+            <p>
+                <label>Danh mục:</label>
+                @*<input asp-for="category_id" />*@
+                <select asp-for="NewscateId" asp-items="@(new SelectList(ViewBag.Categories,"NewscateId","NewscateName"))"></select>
+            </p>
+            <p>
+                <label>Ảnh:</label>
+                <input asp-for="News_image" onchange="showPreview1(this)" />
+                <img id="imgPreview1" style="width:100px" src="@Model.NewsLinkImage" />
+            </p>
+            <p>
+                <label>Ngày đăng:</label>
+                <input type="date" asp-for="Datecreated" />
+            </p>
+            <p>
+                <label>Mô tả:</label>
+                <input asp-for="NewsSummary" />
+            </p>
+            <p>
+                <label>Nội dung:</label>
+                <textarea asp-for="NewsContent" id="rtxBlogContent"></textarea>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="submit">Lưu</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+<script src="~/lib/ckeditor/adapters/jquery.js"></script>
+<script>
+    $("#rtxBlogContent").ckeditor();
+</script>
+
+<script type="text/javascript">
+    function showPreview1(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#imgPreview1').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+
+

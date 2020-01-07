@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Source.Models.DBF.Tbbaogialienquan>
+
+@{
+    ViewData["Title"] = "BaoGiaLienQuan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>BaoGiaLienQuan</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BaogialienquanTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaogialienquanTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BaogialienquanId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BaogialienquanId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BaogialienquanId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

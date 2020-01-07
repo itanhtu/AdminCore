@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Source.Models.DBF.Tbnews>
+
+@{
+    ViewData["Title"] = "TinTuc";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>TinTuc</h2>
+
+<p>
+    <a asp-action="NewsAdd" >Thêm</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewsSummary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datecreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datemodified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hidden)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="@item.NewsImage" style="width:100px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewsSummary)
+            </td>
+            <td>
+                @String.Format("{0:dd/MM/yyyy}", item.Datecreated)
+            </td>
+            <td>
+                @String.Format("{0:dd/MM/yyyy}", item.Datemodified)
+            </td>
+            <td>
+                <a asp-action="NewsEdit" asp-route-id="@item.NewsId">Edit</a> |
+                <a asp-action="NewsDelete" asp-route-id="@item.NewsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Source.Models.DBF.Tbgroupcate>
+
+@{
+    ViewData["Title"] = "NhomLoai";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>NhomLoai</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupcateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupcateDepcription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupcateIcon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupcateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupcateDepcription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupcateIcon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GroupcateId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.GroupcateId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.GroupcateId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

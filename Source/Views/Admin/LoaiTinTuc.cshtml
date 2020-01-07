@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Tbnewscate>
+
+@{
+    ViewData["Title"] = "LoaiTinTuc";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>LoaiTinTuc @ViewBag.ABC</h2>
+
+<p>
+    <partial name="NewsCateAdd" model="new Tbnewscate()" />
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NewscateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewscateNote)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewscateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NewscateNote)
+            </td>
+            <td>
+                <a asp-action="NewsCateEdit" asp-route-id="@item.NewscateId">Edit</a> |
+                <a href="@Url.Action("NewsCateDelete",
+                            "Admin", new { id = item.NewscateId })"
+                   class="btn btn-danger btn-xoa">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
